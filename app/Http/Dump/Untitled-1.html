@@ -1,0 +1,84 @@
+<!-- ############ LAYOUT START-->
+
+        <!-- ############ Aside START-->
+        <div id="aside" class="app-aside fade box-shadow-x nav-expand white" aria-hidden="true">
+            <div class="sidenav modal-dialog dk">
+                <!-- sidenav top -->
+
+                <div class="navbar lt" style="background-color:  #ddeffd ; color: #ffffff">
+
+                    @if (auth::check())
+
+                        @if (Auth::guard('eksmp')->check())
+                            <a href="{{ url('/') }}" class="navbar-brand">
+                                {{-- <img height="25px" src="http://localhost:88/kemendag/public/front/assets/img/logo/logo.png" alt="."> --}}
+                                <img height="25px" src="{{ url('assets') }}/assets/images/logonew.png" alt=".">
+                                {{-- <span class="hidden-folded d-inline"><font size="3px">Ministry Of Trade </font></span> --}}
+                            </a>
+                        @else
+                            <img height="25px" src="{{ url('assets') }}/assets/images/logonew.png" alt=".">
+                        @endif
+                    @else
+                        <!-- brand -->
+                        <a href="{{ url('/') }}" class="navbar-brand">
+                            {{-- <img height="25px" src="http://localhost:88/kemendag/public/front/assets/img/logo/logo.png" alt="."> --}}
+                            {{-- <img height="25px" src="{{url('assets')}}/assets/images/icon product-22.png" alt="." > --}}
+                            <img height="25px" src="{{ url('assets') }}/assets/images/logonew.png" alt=".">
+                            {{-- <span class="hidden-folded d-inline"><font size="3px">Ministry Of Trade </font></span> --}}
+                        </a>
+                    @endif
+                    <!-- / brand -->
+                </div>
+
+
+                @include('menu')
+
+                <!-- sidenav bottom -->
+                <div class="no-shrink lt" style="background-color:  #2791a6  ; color: #ffffff">
+                    <div class="nav-fold">
+
+                        <div class="dropdown-menu  w pt-0 mt-2 animate fadeIn">
+                            <div class="row no-gutters b-b mb-2">
+                                <div class="col-4 b-r">
+                                    <a href="app.user.html" class="py-2 pt-3 d-block text-center">
+                                        <i class="fa text-md fa-phone-square text-muted"></i>
+                                        <small class="d-block">Call</small>
+                                    </a>
+                                </div>
+                                <div class="col-4 b-r">
+                                    <a href="app.message.html" class="py-2 pt-3 d-block text-center">
+                                        <i class="fa text-md fa-comment text-muted"></i>
+                                        <small class="d-block">Chat</small>
+                                    </a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="app.inbox.html" class="py-2 pt-3 d-block text-center">
+                                        <i class="fa text-md fa-envelope text-muted"></i>
+                                        <small class="d-block">Email</small>
+                                    </a>
+                                </div>
+                            </div>
+                            <a class="dropdown-item" href="profile.html">
+                                <span>Profile</span>
+                            </a>
+                            <a class="dropdown-item" href="setting.html">
+                                <span>Settings</span>
+                            </a>
+                            <a class="dropdown-item" href="app.inbox.html">
+                                <span class="float-right"><span class="badge info">6</span></span>
+                                <span>Inbox</span>
+                            </a>
+                            <a class="dropdown-item" href="app.message.html">
+                                <span>Message</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="docs.html">
+                                Need help?
+                            </a>
+                            <a class="dropdown-item" href="signin.html">Sign out</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>

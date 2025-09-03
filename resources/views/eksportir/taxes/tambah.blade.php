@@ -1,0 +1,224 @@
+@extends('header2')
+@section('content')
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 8px 10px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .rightbtn {
+            float: left;
+        }
+
+        .select2-container .select2-selection--single {
+            box-sizing: border-box;
+            cursor: pointer;
+            display: block;
+            height: 35px !important;
+        }
+
+        .custom-select,
+        .custom-file-control,
+        .custom-file-control:before,
+        select.form-control:not([size]):not([multiple]):not(.form-control-lg):not(.form-control-sm) {
+            height: 35px !important;
+        }
+
+    </style>
+    {{-- <div class="container-fluid mt--6"> --}}
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header border-bottom">
+                    <h3 class="mb-0">Form Tambah Pajak</h3>
+                </div>
+                <div class="card-body">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block" style="text-align: center">
+                            {{-- <button type="button" class="close" data-dismiss="alert">×</button> --}}
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                    @if ($message = Session::get('error'))
+                        <div class="alert alert-danger alert-block" style="text-align: center">
+                            {{-- <button type="button" class="close" data-dismiss="alert">×</button> --}}
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                    <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="{{ url($url) }}">
+                        {{ csrf_field() }}
+                        <div class="form-row">
+                            <div class="form-group col-sm-3 mb-1">
+                                <label><b>Year</b></label>
+                                <select class="atc form-control select2" required id="year" name="year">
+                                    <option value="">- Select Years -</option>
+                                    @foreach ($years as $sa)
+                                        <option value="{{ $sa }}">{{ $sa }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-3 mb-2">
+                                <label><b>Laporan PPH</b></label>
+                                <select class="form-control" name="laporan_pph">
+									<option value="">-- Choose Status --</option>
+									<option value="1">Sudah</option>
+									<option value="2">Belum</option>
+								</select>
+                                {{-- <input type="text" class="form-control" name="laporan_pph"> --}}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-3 mb-2">
+                                <label><b>Laporan PPN</b></label>
+                                <select class="form-control" name="laporan_ppn">
+									<option value="">-- Choose Status --</option>
+									<option value="1">Sudah</option>
+									<option value="2">Belum</option>
+								</select>
+                                {{-- <input type="text" class="form-control" name="laporan_ppn"> --}}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-3 mb-2">
+                                <label><b>Laporan Pasal 21</b></label>
+                                <select class="form-control" name="laporan_pasal_21">
+									<option value="">-- Choose Status --</option>
+									<option value="1">Sudah</option>
+									<option value="2">Belum</option>
+								</select>
+                                {{-- <input type="text" class="form-control" name="laporan_pasal_21"> --}}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-3 mb-2">
+                                <label><b>Total PPH</b></label>
+                                <input type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    class="form-control amount" name="total_pph">
+                            </div>
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-sm-3 mb-2">
+                                <label><b>Total PPN</b></label>
+                                <input type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    class="form-control amount" name="total_ppn">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-3 mb-2">
+                                <label><b>Total Pasal 21</b></label>
+                                <input type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    class="form-control amount" name="total_pasal_21">
+                            </div>
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-sm-3 mb-2">
+                                <label><b>Arrears PPH</b></label>
+                                <input type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    class="form-control amount" name="tunggakan_pph">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-3 mb-2">
+                                <label><b>Arrears PPN</b></label>
+                                <input type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+                                    "
+                                    class="form-control amount" name="tunggakan_ppn">
+                            </div>
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-sm-3 mb-2">
+                                <label><b>Arrears Pasal 21</b></label>
+                                <input type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    class="form-control amount" name="tunggakan_pasal_21">
+                            </div>
+                        </div>
+                        <div class="form-row rightbtn">
+                            <div class="form-group col-sm-12">
+                                <a style="color: white" href="{{ url('/eksportir/taxes') }}" class="btn btn-danger"><i
+                                        style="color: white"></i>
+                                    Back
+                                </a>
+                                <button class="btn btn-primary" type="submit">Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    @include('footer')
+
+
+
+<script>
+    $('.amount').inputmask({
+        alias: "decimal",
+        digits: -1,
+        repeat: 36,
+        digitsOptional: false,
+        decimalProtect: true,
+        groupSeparator: ".",
+        placeholder: '0',
+        radixPoint: ",",
+        radixFocus: true,
+        autoGroup: true,
+        autoUnmask: false,
+        onBeforeMask: function(value, opts) {
+            return value;
+        },
+        removeMaskOnSubmit: true
+    });
+</script>
+
+@endsection

@@ -1,0 +1,394 @@
+
+                    <div class="row">
+                        <div class="col-md-12">
+                          <div class="box" style="max-height: 400px; overflow-y: scroll;overflow-x: hidden; padding: 0px 5px 0px 5px;">
+                            <br>
+                            <div class="row">
+                              <?php
+                                $datenya = NULL;
+                              ?>
+                              @foreach($messages as $msg)
+                              @if($msg->sender == $id_user)
+                              <div class="col-md-1"></div>
+                              <div class="col-md-10">
+                                @if($datenya == NULL)
+                                    <?php
+                                        $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                    ?>
+                                    <center>
+                                        <i>
+                                            {{$datenya}}
+                                        </i>
+                                    </center><br>
+                                @else
+                                    @if($datenya != date('d-m-Y', strtotime($msg->created_at)))
+                                        <?php
+                                            $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                        ?>
+                                        <center>
+                                            <i>
+                                                {{$datenya}}
+                                            </i>
+                                        </center><br>
+                                    @endif
+                                @endif
+                                <div class="row pull-right">
+                                  <div class="col-md-10">
+                                    <label class="label" style="background: #FFD54F; border-radius:10px; width:300px; padding: 10px;">
+                                        <b>You</b> :<br>
+                                        @if($msg->file == NULL)
+                                            {{$msg->messages}}<br>
+                                        @else
+                                            <a href="{{ url('/').'/uploads/ChatFileInquiry/'.$msg->id }}/{{ $msg->file }}" target="_blank" class="atag" style="color: red;">{{$msg->file}}</a><br><br>
+                                            {{$msg->messages}}<br>
+                                        @endif
+                                        <span style="color: #555; float: right;">{{date('H:i',strtotime($msg->created_at))}}</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div><br>
+                              <div class="col-md-1"></div>
+                              @else
+                              <div class="col-md-1"></div>
+                              <div class="col-md-10">
+                                @if($datenya == NULL)
+                                    <?php
+                                        $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                    ?>
+                                    <center>
+                                        <i>
+                                            {{$datenya}}
+                                        </i>
+                                    </center><br>
+                                @else
+                                    @if($datenya != date('d-m-Y', strtotime($msg->created_at)))
+                                        <?php
+                                            $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                        ?>
+                                        <center>
+                                            <i>
+                                                {{$datenya}}
+                                            </i>
+                                        </center><br>
+                                    @endif
+                                @endif
+                                <div class="row">
+                                  <div class="col-md-10">
+                                    <label class="label" style="background: #eee; border-radius:10px; width:300px; padding: 10px;">
+                                        <b>{{getCompanyName($msg->sender)}}</b> :<br>
+                                        @if($msg->file == NULL)
+                                            {{$msg->messages}}<br>
+                                        @else
+                                            <a href="{{ url('/').'/uploads/ChatFileInquiry/'.$msg->id }}/{{ $msg->file }}" target="_blank" class="atag" style="color: red;">{{$msg->file}}</a><br><br>
+                                            {{$msg->messages}}<br>
+                                        @endif
+                                        <span style="color: #555; float: right;">{{date('H:i',strtotime($msg->created_at))}}</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div><br>
+                              <div class="col-md-1"></div>
+                              @endif
+                              @endforeach
+                            </div><br>
+                          </div>
+                        </div>
+                    </div>
+                    @if($data->status != 4)
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="messages" value="" id="messages" autocomplete="off">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalInvoice" style="border-color: rgba(120, 130, 140, 0.5);">
+                                    <img src="{{asset('image/paperclip.png')}}" width="20px">
+                                </button>
+                                <!-- <input type="hidden" name="sender" id="sender" value="{{$id_user}}">
+                                <input type="hidden" name="id_inquiry" id="id_inquiry" value="{{$inquiry->id}}">
+                                <input type="hidden" name="id_broadcast" id="id_broadcast" value="{{$data->id}}">
+                                <input type="hidden" name="receiver" id="receiver" value="{{$data->id_itdp_company_users}}"> -->
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2 pull-right">
+                      </div>
+                    </div><br>
+                    @endif
+                    <br>
+					
+PERWAKILAN.............................................
+<div class="row">
+                        <div class="col-md-12">
+                          <div class="box" style="max-height: 400px; overflow-y: scroll;overflow-x: hidden; padding: 0px 5px 0px 5px;">
+                            <br>
+                            <div class="row">
+                              <?php
+                                $datenya = NULL;
+                              ?>
+                              @foreach($messages as $msg)
+                              @if($msg->sender == $id_user)
+                              <div class="col-md-1"></div>
+                              <div class="col-md-10">
+                                @if($datenya == NULL)
+                                    <?php
+                                        $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                    ?>
+                                    <center>
+                                        <i>
+                                            {{$datenya}}
+                                        </i>
+                                    </center><br>
+                                @else
+                                    @if($datenya != date('d-m-Y', strtotime($msg->created_at)))
+                                        <?php
+                                            $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                        ?>
+                                        <center>
+                                            <i>
+                                                {{$datenya}}
+                                            </i>
+                                        </center><br>
+                                    @endif
+                                @endif
+                                <div class="row pull-right">
+                                  <div class="col-md-10">
+                                    <label class="label" style="background: #FFD54F; border-radius:10px; width:300px; padding: 10px;">
+                                        <b>You</b> :<br>
+                                        @if($msg->file == NULL)
+                                            {{$msg->messages}}<br>
+                                        @else
+                                            <a href="{{ url('/').'/uploads/ChatFileInquiry/'.$msg->id }}/{{ $msg->file }}" target="_blank" class="atag" style="color: red;">{{$msg->file}}</a><br><br>
+                                            {{$msg->messages}}<br>
+                                        @endif
+                                        <span style="color: #555; float: right;">{{date('H:i',strtotime($msg->created_at))}}</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div><br>
+                              <div class="col-md-1"></div>
+                              @else
+                              <div class="col-md-1"></div>
+                              <div class="col-md-10">
+                                @if($datenya == NULL)
+                                    <?php
+                                        $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                    ?>
+                                    <center>
+                                        <i>
+                                            {{$datenya}}
+                                        </i>
+                                    </center><br>
+                                @else
+                                    @if($datenya != date('d-m-Y', strtotime($msg->created_at)))
+                                        <?php
+                                            $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                        ?>
+                                        <center>
+                                            <i>
+                                                {{$datenya}}
+                                            </i>
+                                        </center><br>
+                                    @endif
+                                @endif
+                                <div class="row">
+                                  <div class="col-md-10">
+                                    <label class="label" style="background: #eee; border-radius:10px; width:300px; padding: 10px;">
+                                        <b>{{getCompanyName($msg->sender)}}</b> :<br>
+                                        @if($msg->file == NULL)
+                                            {{$msg->messages}}<br>
+                                        @else
+                                            <a href="{{ url('/').'/uploads/ChatFileInquiry/'.$msg->id }}/{{ $msg->file }}" target="_blank" class="atag" style="color: red;">{{$msg->file}}</a><br><br>
+                                            {{$msg->messages}}<br>
+                                        @endif
+                                        <span style="color: #555; float: right;">{{date('H:i',strtotime($msg->created_at))}}</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div><br>
+                              <div class="col-md-1"></div>
+                              @endif
+                              @endforeach
+                            </div><br>
+                          </div>
+                        </div>
+                    </div>
+                    @if($data->status != 4)
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="messages" value="" id="messages" autocomplete="off">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalInvoice" style="border-color: rgba(120, 130, 140, 0.5);">
+                                    <img src="{{asset('image/paperclip.png')}}" width="20px">
+                                </button>
+                                <!-- <input type="hidden" name="sender" id="sender" value="{{$id_user}}">
+                                <input type="hidden" name="id_inquiry" id="id_inquiry" value="{{$inquiry->id}}">
+                                <input type="hidden" name="id_broadcast" id="id_broadcast" value="{{$data->id}}">
+                                <input type="hidden" name="receiver" id="receiver" value="{{$data->id_itdp_company_users}}"> -->
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2 pull-right">
+                      </div>
+                    </div><br>
+                    @endif
+                    <br>
+					
+EKPORTIR/////////////////////////////////
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box" id="fg1"
+                                 style="max-height: 400px; overflow-y: scroll;overflow-x: hidden; padding: 0px 5px 0px 5px;">
+                                <br>
+                                <div class="row">
+                                    <?php
+                                    $datenya = NULL;
+                                    ?>
+                                    @foreach($messages as $msg)
+                                        @if($msg->sender == $id_user)
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                @if($datenya == NULL)
+                                                    <?php
+                                                    $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                                    ?>
+                                                    <center>
+                                                        <i>
+                                                            {{$datenya}}
+                                                        </i>
+                                                    </center><br>
+                                                @else
+                                                    @if($datenya != date('d-m-Y', strtotime($msg->created_at)))
+                                                        <?php
+                                                        $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                                        ?>
+                                                        <center>
+                                                            <i>
+                                                                {{$datenya}}
+                                                            </i>
+                                                        </center><br>
+                                                    @endif
+                                                @endif
+                                                <div class="row pull-right">
+                                                    <div class="col-md-10">
+                                                        <label class="label"
+                                                               style="background: #FFD54F; border-radius:10px; width:300px; padding: 10px;">
+                                                            <b>You</b> :<br>
+                                                            @if($msg->file == NULL)
+                                                                {{$msg->messages}}<br>
+                                                            @else
+                                                                <a href="{{ url('/').'/uploads/ChatFileInquiry/'.$msg->id }}/{{ $msg->file }}"
+                                                                   target="_blank" class="atag"
+                                                                   style="color: red;">{{$msg->file}}</a><br><br>
+                                                                {{$msg->messages}}<br>
+                                                            @endif
+                                                            <span style="color: #555; float: right;">{{date('H:i',strtotime($msg->created_at))}}</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div><br>
+                                            <div class="col-md-1"></div>
+                                        @else
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                @if($datenya == NULL)
+                                                    <?php
+                                                    $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                                    ?>
+                                                    <center>
+                                                        <i>
+                                                            {{$datenya}}
+                                                        </i>
+                                                    </center><br>
+                                                @else
+                                                    @if($datenya != date('d-m-Y', strtotime($msg->created_at)))
+                                                        <?php
+                                                        $datenya = date('d-m-Y', strtotime($msg->created_at));
+                                                        ?>
+                                                        <center>
+                                                            <i>
+                                                                {{$datenya}}
+                                                            </i>
+                                                        </center><br>
+                                                    @endif
+                                                @endif
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <label class="label"
+                                                               style="background: #eee; border-radius:10px; width:300px; padding: 10px;">
+                                                            <b>
+                                                                @if($inquiry->type == "importir")
+                                                                    {{getCompanyNameImportir($msg->sender)}}
+                                                                @elseif($inquiry->type == "perwakilan")
+                                                                    {{getPerwakilanName($msg->sender)}}
+                                                                @elseif($inquiry->type == "admin")
+                                                                    {{getAdminName($msg->sender)}}
+                                                                @endif
+                                                            </b> :<br>
+                                                            @if($msg->file == NULL)
+                                                                {{$msg->messages}}<br>
+                                                            @else
+                                                                <a href="{{ url('/').'/uploads/ChatFileInquiry/'.$msg->id }}/{{ $msg->file }}"
+                                                                   target="_blank" class="atag"
+                                                                   style="color: red;">{{$msg->file}}</a><br><br>
+                                                                {{$msg->messages}}<br>
+                                                            @endif
+                                                            <span style="color: #555; float: right;">{{date('H:i',strtotime($msg->created_at))}}</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div><br>
+                                            <div class="col-md-1"></div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    @if($inquiry->type == "importir")
+                        @if( $inquiry->status != 4 && $inquiry->status != 5)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" name="messages" value="" id="messages" autocomplete="off">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalFile" style="border-color: rgba(120, 130, 140, 0.5);">
+                                                <img src="{{asset('image/paperclip.png')}}" width="20px">
+                                            </button>
+                                        </div>
+    {{--                                    <i class="fa fa-paperclip" id="uploading" style="font-size:24px; display:inline-flex;"></i>--}}
+
+                                        <input type="hidden" name="type" id="type" value="{{$inquiry->type}}">
+                                        <input type="hidden" name="id_inquiry" id="id_inquiry" value="{{$inquiry->id}}">
+                                        <input type="hidden" name="sender" id="sender" value="{{$id_user}}">
+                                        <input type="hidden" name="receiver" id="receiver" value="{{$inquiry->id_pembuat}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 pull-right">
+                                </div>
+                            </div><br>
+                        @endif
+                    @elseif($inquiry->type == "perwakilan" || $inquiry->type == "admin")
+                        @if($broadcast->status != 4 && $broadcast->status != 5)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" name="messages" value="" id="messages" autocomplete="off">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalFile" style="border-color: rgba(120, 130, 140, 0.5);">
+                                                <img src="{{asset('image/paperclip.png')}}" width="20px">
+                                            </button>
+                                        </div>
+                                        <input type="hidden" name="type" id="type" value="{{$inquiry->type}}">
+                                        <input type="hidden" name="id_inquiry" id="id_inquiry" value="{{$inquiry->id}}">
+                                        <input type="hidden" name="sender" id="sender" value="{{$id_user}}">
+                                        <input type="hidden" name="receiver" id="receiver" value="{{$inquiry->id_pembuat}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 pull-right">
+                                </div>
+                            </div><br>
+                        @endif
+                    @endif
