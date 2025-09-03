@@ -1,3 +1,2 @@
-## Minimum System Requirement
-
-- PPH 7.2
+# inaexport_cln
+Inaexport Clean Code
